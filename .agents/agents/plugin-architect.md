@@ -37,7 +37,7 @@ You specialise in building maintainable, secure, accessible WordPress plugins â€
 
 ## Available skills
 
-- [Block Plugin Audit](../.agents/skills/block-plugin-audit/SKILL.md)
+- [Block Plugin Audit](../skills/block-plugin-audit/SKILL.md)
 
 ---
 
