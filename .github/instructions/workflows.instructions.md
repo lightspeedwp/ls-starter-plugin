@@ -10,7 +10,7 @@ applyTo: ".github/workflows/**"
 |---|---|
 | `ci.yml` | Install dependencies, validate plugin, lint |
 | `code-quality.yml` | PHP coding standards and lint checks |
-| `release.yml` | Validate changelog on release tags |
+| `release.yml` | Validate plugin scaffold (plugin:validate, security scan, placeholder scan, PHPCS) on release tags |
 
 ## Rules
 
