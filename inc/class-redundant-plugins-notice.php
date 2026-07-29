@@ -128,7 +128,7 @@ function ls_starter_redundant_plugins_notice() {
 				esc_html( $entry['name'] ),
 				esc_html( $entry['reason'] )
 			);
-			$class   = 'notice notice-info is-dismissible ls-starter-redundant-plugin-notice';
+			$class = 'notice notice-info is-dismissible ls-starter-redundant-plugin-notice';
 		} else {
 			$message = sprintf(
 				/* translators: 1: plugin name, 2: reason this plugin's function is already covered. */
@@ -136,7 +136,7 @@ function ls_starter_redundant_plugins_notice() {
 				esc_html( $entry['name'] ),
 				esc_html( $entry['reason'] )
 			);
-			$class   = 'notice notice-warning is-dismissible ls-starter-redundant-plugin-notice';
+			$class = 'notice notice-warning is-dismissible ls-starter-redundant-plugin-notice';
 		}
 
 		printf(
