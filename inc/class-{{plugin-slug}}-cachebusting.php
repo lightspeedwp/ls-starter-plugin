@@ -151,6 +151,7 @@ function ls_starter_cachebusting_get_mtime( $clean_url ) {
 		return false;
 	}
 
+	// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- filemtime() can warn on a race (file removed between file_exists() and this call); the return-value check below is what actually decides the outcome.
 	$mtime = @filemtime( $path );
 
 	$cache[ $clean_url ] = false !== $mtime ? $mtime : false;
