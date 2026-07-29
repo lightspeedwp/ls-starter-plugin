@@ -25,24 +25,11 @@ jobs:
           tools: composer
           coverage: none
 
-      - name: Check for unreplaced template placeholders
-        id: placeholder-check
-        run: |
-          if grep -q '{{' composer.json; then
-            echo "unscaffolded=true" >> "$GITHUB_OUTPUT"
-            echo "::notice::composer.json still contains {{ }} template placeholders; skipping Composer validation until the plugin is scaffolded."
-          else
-            echo "unscaffolded=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Install Composer dependencies
-        if: steps.placeholder-check.outputs.unscaffolded != 'true'
         run: composer install --no-interaction --prefer-dist --no-progress
 
       - name: PHP syntax check
-        if: steps.placeholder-check.outputs.unscaffolded != 'true'
         run: composer run phplint
 
       - name: PHP coding standards
-        if: steps.placeholder-check.outputs.unscaffolded != 'true'
         run: composer run phpcs
