@@ -3,7 +3,7 @@
  * Plugin Name:       {{PLUGIN_NAME}}
  * Plugin URI:        {{PLUGIN_URI}}
  * Description:       {{PLUGIN_DESCRIPTION}}
- * Version:           0.1.0
+ * Version:           0.2.0
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * Author:            {{AUTHOR_NAME}}
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants.
-define( 'LS_STARTER_VERSION', '0.1.0' );
+define( 'LS_STARTER_VERSION', '0.2.0' );
 define( 'LS_STARTER_PLUGIN_FILE', __FILE__ );
 define( 'LS_STARTER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LS_STARTER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -44,6 +44,10 @@ add_action( 'init', 'ls_starter_load_textdomain' );
  * Add your include files in inc/ and require them here when ready.
  */
 function ls_starter_init() {
-	// Example: require_once LS_STARTER_PLUGIN_DIR . 'inc/class-{{PLUGIN_SLUG}}-example.php'.
+	// Native asset cachebusting: replaces the Cachebuster plugin, see inc/class-cachebusting.php.
+	require_once LS_STARTER_PLUGIN_DIR . 'inc/class-cachebusting.php';
+
+	// Notice for plugins whose function this codebase already covers natively.
+	require_once LS_STARTER_PLUGIN_DIR . 'inc/class-redundant-plugins-notice.php';
 }
 add_action( 'plugins_loaded', 'ls_starter_init' );
