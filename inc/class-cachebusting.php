@@ -55,7 +55,10 @@ function ls_starter_cachebusting_resolve_path( $url ) {
 			return false;
 		}
 
-		if ( 0 !== strpos( $real_path, $real_base ) ) {
+		// Compare against a trailing-slashed base so a sibling directory whose
+		// name merely starts with the base (wp-content-backup) is not treated
+		// as inside it.
+		if ( $real_path !== $real_base && 0 !== strpos( $real_path, trailingslashit( $real_base ) ) ) {
 			return false;
 		}
 

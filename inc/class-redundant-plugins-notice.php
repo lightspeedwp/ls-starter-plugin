@@ -29,6 +29,7 @@ function ls_starter_redundant_plugins_registry() {
 	return array(
 		'cachebuster'        => array(
 			'name'   => 'Cachebuster',
+			'status' => 'replaced',
 			'reason' => __( 'Asset cache-busting is handled natively by this plugin (filemtime-based versioning on script/style URLs).', '{{TEXT_DOMAIN}}' ),
 		),
 		// Safe SVG: native SVG-upload handling is not implemented yet. Wording
@@ -36,10 +37,12 @@ function ls_starter_redundant_plugins_registry() {
 		// issue) once a native replacement ships.
 		'safe-svg'           => array(
 			'name'   => 'Safe SVG',
+			'status' => 'planned',
 			'reason' => __( 'This codebase does not yet include a native replacement for Safe SVG. Keep this plugin active until native SVG upload support ships; this notice is a placeholder for that tracking issue.', '{{TEXT_DOMAIN}}' ),
 		),
 		'change-mail-sender' => array(
 			'name'   => 'Change Mail Sender',
+			'status' => 'replaced',
 			'reason' => __( 'The outgoing mail from-name/from-address is handled natively by this plugin.', '{{TEXT_DOMAIN}}' ),
 		),
 	);
@@ -113,17 +116,34 @@ function ls_starter_redundant_plugins_notice() {
 	}
 
 	foreach ( $to_show as $slug => $entry ) {
+		$status = isset( $entry['status'] ) ? $entry['status'] : 'replaced';
+
+		if ( 'planned' === $status ) {
+			// No native replacement exists yet, so never prompt for
+			// deactivation: doing so could talk an administrator into
+			// disabling protection this site still relies on.
+			$message = sprintf(
+				/* translators: 1: plugin name, 2: note about the planned native replacement. */
+				__( '<strong>%1$s</strong> is active. %2$s', '{{TEXT_DOMAIN}}' ),
+				esc_html( $entry['name'] ),
+				esc_html( $entry['reason'] )
+			);
+			$class   = 'notice notice-info is-dismissible ls-starter-redundant-plugin-notice';
+		} else {
+			$message = sprintf(
+				/* translators: 1: plugin name, 2: reason this plugin's function is already covered. */
+				__( '<strong>%1$s</strong> is active, but this site already handles that function natively: %2$s Consider deactivating %1$s once you have confirmed the native behaviour meets your needs.', '{{TEXT_DOMAIN}}' ),
+				esc_html( $entry['name'] ),
+				esc_html( $entry['reason'] )
+			);
+			$class   = 'notice notice-warning is-dismissible ls-starter-redundant-plugin-notice';
+		}
+
 		printf(
-			'<div class="notice notice-warning is-dismissible ls-starter-redundant-plugin-notice" data-ls-starter-slug="%1$s"><p>%2$s</p></div>',
+			'<div class="%1$s" data-ls-starter-slug="%2$s"><p>%3$s</p></div>',
+			esc_attr( $class ),
 			esc_attr( $slug ),
-			wp_kses_post(
-				sprintf(
-					/* translators: 1: plugin name, 2: reason this plugin's function is already covered. */
-					__( '<strong>%1$s</strong> is active, but this site already handles that function natively: %2$s Consider deactivating %1$s once you have confirmed the native behaviour meets your needs.', '{{TEXT_DOMAIN}}' ),
-					esc_html( $entry['name'] ),
-					esc_html( $entry['reason'] )
-				)
-			)
+			wp_kses_post( $message )
 		);
 	}
 	?>
