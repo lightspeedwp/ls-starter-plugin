@@ -44,10 +44,10 @@ add_action( 'init', 'ls_starter_load_textdomain' );
  * Add your include files in inc/ and require them here when ready.
  */
 function ls_starter_init() {
-	// Native asset cachebusting: replaces the Cachebuster plugin, see inc/class-{{PLUGIN_SLUG}}-cachebusting.php.
-	require_once LS_STARTER_PLUGIN_DIR . 'inc/class-{{PLUGIN_SLUG}}-cachebusting.php';
+	// Native asset cachebusting: replaces the Cachebuster plugin, see inc/class-cachebusting.php.
+	require_once LS_STARTER_PLUGIN_DIR . 'inc/class-cachebusting.php';
 
 	// Notice for plugins whose function this codebase already covers natively.
-	require_once LS_STARTER_PLUGIN_DIR . 'inc/class-{{PLUGIN_SLUG}}-redundant-plugins-notice.php';
+	require_once LS_STARTER_PLUGIN_DIR . 'inc/class-redundant-plugins-notice.php';
 }
 add_action( 'plugins_loaded', 'ls_starter_init' );
