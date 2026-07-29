@@ -20,7 +20,7 @@
 	Excluded for this one file only; the sniff still applies everywhere else.
 	-->
 	<rule ref="WordPress.Files.FileName">
-		<exclude-pattern>^\{\{PLUGIN_SLUG\}\}\.php$</exclude-pattern>
+		<exclude-pattern>\{\{PLUGIN_SLUG\}\}\.php$</exclude-pattern>
 	</rule>
 
 	<config name="testVersion" value="8.0-"/>
