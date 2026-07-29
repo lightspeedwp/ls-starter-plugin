@@ -96,9 +96,10 @@ Search and replace these tokens across the entire repo before starting work:
 | `{{AUTHOR_NAME}}` | `LightSpeed` |
 | `{{AUTHOR_URI}}` | `https://lightspeedwp.agency` |
 | `{{NAMESPACE}}` | `MY_AWESOME_PLUGIN` |
-| `{{PACKAGE_NAME}}` | `lightspeedwp/my-awesome-plugin` |
 | `{{REPO_NAME}}` | `my-awesome-plugin` |
 | `{{GITHUB_ORG}}` | `lightspeedwp` |
+
+The `name` field in `package.json` and `composer.json` ships with a valid default (not a placeholder) — update it when scaffolding, no token to search and replace.
 
 Also rename `{{PLUGIN_SLUG}}.php` to match your actual plugin slug.
 
