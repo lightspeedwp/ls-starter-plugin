@@ -18,32 +18,32 @@
 
 // Prevent direct access.
 if ( ! defined( 'ABSPATH' ) ) {
-exit;
+	exit;
 }
 
 // Plugin constants.
-define( '{{NAMESPACE}}_VERSION', '0.1.0' );
-define( '{{NAMESPACE}}_PLUGIN_FILE', __FILE__ );
-define( '{{NAMESPACE}}_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( '{{NAMESPACE}}_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'LS_STARTER_VERSION', '0.1.0' );
+define( 'LS_STARTER_PLUGIN_FILE', __FILE__ );
+define( 'LS_STARTER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'LS_STARTER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * Load the plugin text domain for translation.
  */
-function {{PLUGIN_SLUG}}_load_textdomain() {
-load_plugin_textdomain(
-'{{TEXT_DOMAIN}}',
-false,
-dirname( plugin_basename( __FILE__ ) ) . '/languages'
-);
+function ls_starter_load_textdomain() {
+	load_plugin_textdomain(
+		'{{TEXT_DOMAIN}}',
+		false,
+		dirname( plugin_basename( __FILE__ ) ) . '/languages'
+	);
 }
-add_action( 'init', '{{PLUGIN_SLUG}}_load_textdomain' );
+add_action( 'init', 'ls_starter_load_textdomain' );
 
 /**
  * Load optional plugin includes.
  * Add your include files in inc/ and require them here when ready.
  */
-function {{PLUGIN_SLUG}}_init() {
-// Example: require_once {{NAMESPACE}}_PLUGIN_DIR . 'inc/class-{{PLUGIN_SLUG}}-example.php';
+function ls_starter_init() {
+	// Example: require_once LS_STARTER_PLUGIN_DIR . 'inc/class-{{PLUGIN_SLUG}}-example.php'.
 }
-add_action( 'plugins_loaded', '{{PLUGIN_SLUG}}_init' );
+add_action( 'plugins_loaded', 'ls_starter_init' );

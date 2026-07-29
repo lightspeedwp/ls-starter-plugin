@@ -18,13 +18,13 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 // Example: Remove a plugin option.
-// delete_option( '{{PLUGIN_SLUG}}_settings' );
+// delete_option( '{{PLUGIN_SLUG}}_settings' ).
 
 // Example: Remove all plugin options by prefix.
 // global $wpdb;
-// $wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '{{PLUGIN_SLUG}}_%'" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+// $wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '{{PLUGIN_SLUG}}_%'" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.
 
 // Example: Remove a custom database table.
 // global $wpdb;
 // $table_name = $wpdb->prefix . '{{PLUGIN_SLUG}}_data';
-// $wpdb->query( "DROP TABLE IF EXISTS {$table_name}" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+// $wpdb->query( "DROP TABLE IF EXISTS {$table_name}" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.
