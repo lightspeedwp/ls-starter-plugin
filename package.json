@@ -11,8 +11,8 @@
     "schema:validate": "node plugin-utils.mjs validate-schema",
     "security:scan": "node plugin-utils.mjs security-scan",
     "lint": "npm run lint:js && npm run lint:css && npm run lint:json",
-    "lint:js": "wp-scripts lint-js src",
-    "lint:css": "wp-scripts lint-style src",
+    "lint:js": "wp-scripts lint-js --no-error-on-unmatched-pattern src",
+    "lint:css": "wp-scripts lint-style --allow-empty-input src",
     "lint:json": "wp-scripts lint-md-docs . --ext=.json || true",
     "i18n": "wp-scripts makepot",
     "packages-update": "wp-scripts packages-update",
@@ -22,6 +22,6 @@
     "node": ">=24.0.0"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^30.0.0"
+    "@wordpress/scripts": "^33.0.0"
   }
 }
