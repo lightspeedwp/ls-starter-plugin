@@ -159,7 +159,7 @@ function ls_starter_dismiss_redundant_notice() {
 		wp_send_json_error( null, 403 );
 	}
 
-	$slug = isset( $_POST['slug'] ) ? sanitize_key( wp_unslash( $_POST['slug'] ) ) : '';
+	$slug     = isset( $_POST['slug'] ) ? sanitize_key( wp_unslash( $_POST['slug'] ) ) : '';
 	$registry = ls_starter_redundant_plugins_registry();
 
 	if ( '' === $slug || ! isset( $registry[ $slug ] ) ) {
