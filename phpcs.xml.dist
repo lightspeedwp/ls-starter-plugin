@@ -21,6 +21,7 @@
 	-->
 	<rule ref="WordPress.Files.FileName">
 		<exclude-pattern>\{\{PLUGIN_SLUG\}\}\.php$</exclude-pattern>
+		<exclude-pattern>inc/class-\{\{plugin-slug\}\}-.*\.php$</exclude-pattern>
 	</rule>
 
 	<config name="testVersion" value="8.0-"/>
