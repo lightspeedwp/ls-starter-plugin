@@ -1,5 +1,5 @@
 {
-  "name": "{{PACKAGE_NAME}}",
+  "name": "lightspeedwp/ls-starter-plugin",
   "type": "wordpress-plugin",
   "license": "GPL-2.0-or-later",
   "authors": [
