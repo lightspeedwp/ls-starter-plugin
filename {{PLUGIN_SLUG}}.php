@@ -18,7 +18,7 @@
 
 // Prevent direct access.
 if ( ! defined( 'ABSPATH' ) ) {
-exit;
+	exit;
 }
 
 // Plugin constants.
@@ -31,11 +31,11 @@ define( 'LS_STARTER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
  * Load the plugin text domain for translation.
  */
 function ls_starter_load_textdomain() {
-load_plugin_textdomain(
-'{{TEXT_DOMAIN}}',
-false,
-dirname( plugin_basename( __FILE__ ) ) . '/languages'
-);
+	load_plugin_textdomain(
+		'{{TEXT_DOMAIN}}',
+		false,
+		dirname( plugin_basename( __FILE__ ) ) . '/languages'
+	);
 }
 add_action( 'init', 'ls_starter_load_textdomain' );
 
@@ -44,6 +44,6 @@ add_action( 'init', 'ls_starter_load_textdomain' );
  * Add your include files in inc/ and require them here when ready.
  */
 function ls_starter_init() {
-// Example: require_once LS_STARTER_PLUGIN_DIR . 'inc/class-{{PLUGIN_SLUG}}-example.php';
+	// Example: require_once LS_STARTER_PLUGIN_DIR . 'inc/class-{{PLUGIN_SLUG}}-example.php'.
 }
 add_action( 'plugins_loaded', 'ls_starter_init' );
