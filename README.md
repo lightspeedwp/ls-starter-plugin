@@ -95,9 +95,14 @@ Search and replace these tokens across the entire repo before starting work:
 | `{{PLUGIN_DESCRIPTION}}` | `A useful WordPress plugin.` |
 | `{{AUTHOR_NAME}}` | `LightSpeed` |
 | `{{AUTHOR_URI}}` | `https://lightspeedwp.agency` |
-| `{{NAMESPACE}}` | `MY_AWESOME_PLUGIN` |
+| `{{NAMESPACE}}` | `MY_AWESOME_PLUGIN` (used only in the `@package` docblock tag) |
 | `{{REPO_NAME}}` | `my-awesome-plugin` |
 | `{{GITHUB_ORG}}` | `lightspeedwp` |
+
+PHP identifiers (function names, `defined()` constants) are not tokenised — they ship with the fixed
+placeholder convention `ls_starter_` (functions) / `LS_STARTER_` (constants), e.g. `ls_starter_init()`,
+`LS_STARTER_VERSION`. Scaffolding tooling replaces these prefixes with your real project prefix at
+generation time; there is no `{{ }}` token to search and replace for them.
 
 The `name` field in `package.json` and `composer.json` ships with a valid default (not a placeholder) — update it when scaffolding, no token to search and replace.
 
